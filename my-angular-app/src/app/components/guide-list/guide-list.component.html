@@ -1,0 +1,78 @@
+<div class="guide-list-container">
+  <header class="header">
+    <h1 class="title">Mes Guides de Voyage</h1>
+    <p class="subtitle">Découvrez vos destinations</p>
+  </header>
+
+  <!-- Barre de recherche -->
+  <div class="search-container">
+    <input 
+      type="text" 
+      class="search-input"
+      placeholder="Rechercher un guide..." 
+      [(ngModel)]="termeRecherche"
+      (input)="changementRecherche(termeRecherche)"
+    />
+    <button class="refresh-btn" (click)="rafraichir()" title="Rafraîchir">
+      Rafraîchir
+    </button>
+  </div>
+
+  <!-- Messages d'état -->
+  @if (chargementEnCours) {
+    <div class="loading">
+      <div class="spinner"></div>
+      <p>Chargement des guides...</p>
+    </div>
+  }
+
+  @if (erreur) {
+    <div class="error">
+      <p>{{ erreur }}</p>
+      <button (click)="chargerGuides()" class="retry-btn">Réessayer</button>
+    </div>
+  }
+
+  <!-- Liste des guides -->
+  @if (!chargementEnCours && !erreur) {
+    <div class="guides-grid">
+      @if (guidesFiltres.length === 0) {
+        <div class="no-results">
+          <p>Aucun guide trouvé</p>
+        </div>
+      }
+
+      @for (guide of guidesFiltres; track guide.id) {
+        <article 
+          class="guide-card"
+          (click)="afficherDetailsGuide(guide.id)"
+        >
+          <div class="guide-image-container">
+            <img 
+              [src]="obtenirImageGuide(guide)" 
+              [alt]="guide.titre"
+              class="guide-image"
+              loading="lazy"
+            />
+            @if (guide.duree) {
+              <div class="guide-duration">
+                {{ guide.duree }} jours
+              </div>
+            }
+          </div>
+          
+          <div class="guide-content">
+            <h2 class="guide-title">{{ guide.titre }}</h2>
+            @if (guide.destination) {
+              <p class="guide-destination">
+                {{ guide.destination }}
+              </p>
+            }
+            <p class="guide-description">{{ guide.description }}</p>
+            <button class="view-btn">Voir les détails →</button>
+          </div>
+        </article>
+      }
+    </div>
+  }
+</div>

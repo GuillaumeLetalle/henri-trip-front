@@ -1,0 +1,123 @@
+@if (!chargementEnCours && !erreur && guide) {
+  <div class="guide-detail-container">
+    <!-- Header avec image de couverture -->
+    <header class="guide-header">
+      <button class="back-btn" (click)="retour()">
+        ← Retour aux guides
+      </button>
+      <div class="cover-image-container">
+        <img [src]="obtenirImageGuide()" [alt]="guide.titre" class="cover-image" />
+        <div class="cover-overlay">
+          <h1 class="guide-title">{{ guide.titre }}</h1>
+          @if (guide.destination) {
+            <p class="guide-destination">
+              {{ guide.destination }}
+            </p>
+          }
+        </div>
+      </div>
+    </header>
+
+    <!-- Informations du guide -->
+    <section class="guide-info">
+      <div class="info-card">
+        <p class="guide-description">{{ guide.description }}</p>
+        <div class="guide-meta">
+          @if (guide.duree) {
+            <span class="meta-item">
+              <strong>Durée:</strong> {{ guide.duree }} jours
+            </span>
+          }
+          <span class="meta-item">
+            <strong>Nombre d'étapes:</strong> {{ guide.journees.length }}
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation par jour -->
+    <section class="days-section">
+      <h2 class="section-title">Itinéraire</h2>
+      <div class="days-navigation">
+        @for (journee of guide.journees; track journee.id) {
+          <button
+            class="day-btn"
+            [class.active]="journeeSelectionnee?.id === journee.id"
+            (click)="selectionnerJournee(journee)"
+          >
+            <span class="day-number">Jour {{ journee.numeroJour }}</span>
+            <span class="day-title">{{ journee.titre }}</span>
+          </button>
+        }
+      </div>
+    </section>
+
+    <!-- Détails du jour sélectionné -->
+    @if (journeeSelectionnee) {
+      <section class="day-details">
+        <div class="day-header">
+          <h2 class="day-title-large">
+            Jour {{ journeeSelectionnee.numeroJour }}: {{ journeeSelectionnee.titre }}
+          </h2>
+          @if (journeeSelectionnee.description) {
+            <p class="day-description">
+              {{ journeeSelectionnee.description }}
+            </p>
+          }
+        </div>
+
+        <!-- Liste des activités -->
+        <div class="activities-list">
+          <h3 class="activities-title">Activités de la journée</h3>
+          @for (activite of obtenirActivitesTriees(); track activite.id; let i = $index) {
+            <div class="activity-card">
+              <div class="activity-number">{{ i + 1 }}</div>
+              <div class="activity-content">
+                <h4 class="activity-title">{{ activite.titre }}</h4>
+                <p class="activity-description">{{ activite.description }}</p>
+                
+                <div class="activity-meta">
+                  @if (activite.heureDebut) {
+                    <span class="activity-time">
+                      {{ activite.heureDebut }}
+                      @if (activite.heureFin) {
+                        <span> - {{ activite.heureFin }}</span>
+                      }
+                    </span>
+                  }
+                  @if (activite.lieu) {
+                    <span class="activity-location">
+                      {{ activite.lieu }}
+                    </span>
+                  }
+                </div>
+              </div>
+            </div>
+          }
+
+          @if (obtenirActivitesTriees().length === 0) {
+            <div class="no-activities">
+              Aucune activité prévue pour ce jour
+            </div>
+          }
+        </div>
+      </section>
+    }
+  </div>
+}
+
+<!-- État de chargement -->
+@if (chargementEnCours) {
+  <div class="loading">
+    <div class="spinner"></div>
+    <p>Chargement du guide...</p>
+  </div>
+}
+
+<!-- Erreur -->
+@if (erreur) {
+  <div class="error">
+    <p>{{ erreur }}</p>
+    <button (click)="retour()" class="back-btn-error">Retour aux guides</button>
+  </div>
+}

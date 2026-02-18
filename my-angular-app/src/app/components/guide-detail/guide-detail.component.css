@@ -1,0 +1,358 @@
+.guide-detail-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: fadeIn 0.6s ease-in;
+}
+
+/* Header avec image */
+.guide-header {
+  margin-bottom: 30px;
+}
+
+.back-btn {
+  margin: 20px;
+  padding: 12px 24px;
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.back-btn:hover {
+  background: #f8f9fa;
+  border-color: #3498db;
+  transform: translateX(-4px);
+}
+
+.cover-image-container {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 0 0 24px 24px;
+}
+
+.cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cover-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  padding: 40px;
+  color: white;
+}
+
+.guide-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.guide-destination {
+  font-size: 1.3rem;
+  opacity: 0.95;
+}
+
+/* Informations du guide */
+.guide-info {
+  padding: 0 20px;
+  margin-bottom: 40px;
+}
+
+.info-card {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.guide-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.guide-meta {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.meta-item {
+  color: #7f8c8d;
+  font-size: 1rem;
+}
+
+.meta-item strong {
+  color: #2c3e50;
+}
+
+/* Section des jours */
+.days-section {
+  padding: 0 20px;
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.days-navigation {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.day-btn {
+  flex-shrink: 0;
+  padding: 16px 24px;
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+  min-width: 180px;
+}
+
+.day-btn:hover {
+  border-color: #3498db;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+}
+
+.day-btn.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: #667eea;
+  color: white;
+}
+
+.day-number {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+  opacity: 0.8;
+}
+
+.day-title {
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Détails du jour */
+.day-details {
+  padding: 0 20px;
+  animation: slideUp 0.4s ease-out;
+}
+
+.day-header {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.day-title-large {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.day-description {
+  font-size: 1.1rem;
+  color: #7f8c8d;
+  line-height: 1.6;
+}
+
+/* Liste des activités */
+.activities-list {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.activities-title {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.activity-card {
+  display: flex;
+  gap: 20px;
+  padding: 24px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+  border-left: 4px solid #3498db;
+}
+
+.activity-card:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.activity-number {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.activity-content {
+  flex: 1;
+}
+
+.activity-title {
+  font-size: 1.3rem;
+  color: #2c3e50;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.activity-description {
+  color: #7f8c8d;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.activity-meta {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
+}
+
+.activity-time,
+.activity-location {
+  color: #3498db;
+  font-weight: 500;
+}
+
+.no-activities {
+  text-align: center;
+  padding: 40px;
+  color: #95a5a6;
+  font-size: 1.1rem;
+}
+
+/* États */
+.loading {
+  text-align: center;
+  padding: 100px 20px;
+  color: #7f8c8d;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 20px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error {
+  text-align: center;
+  padding: 100px 20px;
+  color: #e74c3c;
+}
+
+.back-btn-error {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.back-btn-error:hover {
+  background: #2980b9;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .guide-title {
+    font-size: 2rem;
+  }
+
+  .cover-image-container {
+    height: 300px;
+  }
+
+  .days-navigation {
+    flex-direction: column;
+  }
+
+  .day-btn {
+    width: 100%;
+  }
+
+  .activity-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .activity-number {
+    margin: 0 auto;
+  }
+}
