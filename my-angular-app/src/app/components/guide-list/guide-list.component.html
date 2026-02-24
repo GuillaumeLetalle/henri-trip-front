@@ -1,75 +1,74 @@
-<div class="guide-list-container">
-  <header class="header">
-    <h1 class="title">Mes Guides de Voyage</h1>
-    <p class="subtitle">Découvrez vos destinations</p>
-  </header>
-
-  <!-- Barre de recherche -->
-  <div class="search-container">
+<div class="conteneur-liste-guides">
+  <div class="bloc-recherche">
     <input 
       type="text" 
-      class="search-input"
+      class="champ-recherche"
       placeholder="Rechercher un guide..." 
       [(ngModel)]="termeRecherche"
       (input)="changementRecherche(termeRecherche)"
     />
-    <button class="refresh-btn" (click)="rafraichir()" title="Rafraîchir">
-      Rafraîchir
+    <button class="bouton-rafraichir" (click)="rafraichir()" title="Rafraîchir">
+      Rafraîchir la liste
     </button>
   </div>
 
-  <!-- Messages d'état -->
+  @if (rechercheEnCours) {
+    <div class="statut-recherche">
+      <span class="point-statut"></span>
+      Recherche en cours… je fouille dans mes carnets.
+    </div>
+  }
+
   @if (chargementEnCours) {
-    <div class="loading">
-      <div class="spinner"></div>
+    <div class="bloc-chargement">
+      <div class="animation-rotation"></div>
       <p>Chargement des guides...</p>
     </div>
   }
 
   @if (erreur) {
-    <div class="error">
+    <div class="bloc-erreur">
       <p>{{ erreur }}</p>
-      <button (click)="chargerGuides()" class="retry-btn">Réessayer</button>
+      <button (click)="chargerGuides()" class="bouton-reessayer">Réessayer</button>
     </div>
   }
 
-  <!-- Liste des guides -->
   @if (!chargementEnCours && !erreur) {
-    <div class="guides-grid">
+    <div class="grille-guides">
       @if (guidesFiltres.length === 0) {
-        <div class="no-results">
+        <div class="aucun-resultat">
           <p>Aucun guide trouvé</p>
         </div>
       }
 
       @for (guide of guidesFiltres; track guide.id) {
         <article 
-          class="guide-card"
+          class="carte-guide"
           (click)="afficherDetailsGuide(guide.id)"
         >
-          <div class="guide-image-container">
+          <div class="conteneur-image-guide">
             <img 
-              [src]="obtenirImageGuide(guide)" 
+              [src]="guide.imageCouverture || imageDefaut" 
               [alt]="guide.titre"
-              class="guide-image"
+              class="image-guide"
               loading="lazy"
             />
             @if (guide.duree) {
-              <div class="guide-duration">
+              <div class="badge-duree-guide">
                 {{ guide.duree }} jours
               </div>
             }
           </div>
           
-          <div class="guide-content">
-            <h2 class="guide-title">{{ guide.titre }}</h2>
+          <div class="contenu-guide">
+            <h2 class="titre-guide">{{ guide.titre }}</h2>
             @if (guide.destination) {
-              <p class="guide-destination">
+              <p class="destination-guide">
                 {{ guide.destination }}
               </p>
             }
-            <p class="guide-description">{{ guide.description }}</p>
-            <button class="view-btn">Voir les détails →</button>
+            <p class="description-guide">{{ guide.description }}</p>
+            <button class="bouton-consultation">Ouvrir mon carnet →</button>
           </div>
         </article>
       }

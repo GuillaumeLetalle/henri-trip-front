@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
 import { ServiceGuide } from '../../services/guide.service';
 import { Guide, Journee, Activite } from '../../models/guide.model';
 
@@ -18,6 +19,7 @@ export class ComposantDetailGuide implements OnInit, OnDestroy {
   journeeSelectionnee: Journee | null = null;
   chargementEnCours: boolean = false;
   erreur: string | null = null;
+  imageDefaut = 'assets/images/default-guide.jpg';
   
   private destruction$ = new Subject<void>();
 
@@ -57,9 +59,8 @@ export class ComposantDetailGuide implements OnInit, OnDestroy {
           }
           this.chargementEnCours = false;
         },
-        error: (erreur) => {
-          // FIXME: améliorer le message d'erreur selon le code HTTP
-          this.erreur = 'Impossible de charger les détails du guide.';
+        error: (erreur: HttpErrorResponse) => {
+          this.erreur = this.formaterMessageErreur(erreur);
           this.chargementEnCours = false;
           console.error('Erreur lors du chargement du guide:', erreur);
         }
@@ -74,12 +75,19 @@ export class ComposantDetailGuide implements OnInit, OnDestroy {
     this.routeur.navigate(['/guides']);
   }
 
-  obtenirImageGuide(): string {
-    return this.guide?.imageCouverture || 'assets/images/default-guide.jpg';
-  }
-
   obtenirActivitesTriees(): Activite[] {
     if (!this.journeeSelectionnee) return [];
     return [...this.journeeSelectionnee.activites].sort((a, b) => a.ordre - b.ordre);
   }
+
+  private formaterMessageErreur(erreur: unknown): string {
+    if (erreur instanceof HttpErrorResponse) {
+      if (erreur.status === 404 && erreur.error?.message) {
+        return erreur.error.message;
+      }
+      return erreur.error?.message || 'Impossible de charger les détails du guide.';
+    }
+    return 'Une erreur inattendue est survenue.';
+  }
 }
+

@@ -1,16 +1,15 @@
 @if (!chargementEnCours && !erreur && guide) {
-  <div class="guide-detail-container">
-    <!-- Header avec image de couverture -->
-    <header class="guide-header">
-      <button class="back-btn" (click)="retour()">
+  <div class="conteneur-detail-guide">
+    <header class="en-tete-guide">
+      <button class="bouton-retour" (click)="retour()">
         ← Retour aux guides
       </button>
-      <div class="cover-image-container">
-        <img [src]="obtenirImageGuide()" [alt]="guide.titre" class="cover-image" />
-        <div class="cover-overlay">
-          <h1 class="guide-title">{{ guide.titre }}</h1>
+      <div class="conteneur-image-couverture">
+        <img [src]="guide.imageCouverture || imageDefaut" [alt]="guide.titre" class="image-couverture" />
+        <div class="voile-couverture">
+          <h1 class="titre-guide-detail">{{ guide.titre }}</h1>
           @if (guide.destination) {
-            <p class="guide-destination">
+            <p class="destination-guide-detail">
               {{ guide.destination }}
             </p>
           }
@@ -18,67 +17,63 @@
       </div>
     </header>
 
-    <!-- Informations du guide -->
-    <section class="guide-info">
-      <div class="info-card">
-        <p class="guide-description">{{ guide.description }}</p>
-        <div class="guide-meta">
+    <section class="bloc-informations-guide">
+      <div class="carte-infos">
+        <p class="description-guide-detail">{{ guide.description }}</p>
+        <div class="metadonnees-guide">
           @if (guide.duree) {
-            <span class="meta-item">
+            <span class="element-meta">
               <strong>Durée:</strong> {{ guide.duree }} jours
             </span>
           }
-          <span class="meta-item">
+          <span class="element-meta">
             <strong>Nombre d'étapes:</strong> {{ guide.journees.length }}
           </span>
         </div>
       </div>
     </section>
 
-    <!-- Navigation par jour -->
-    <section class="days-section">
-      <h2 class="section-title">Itinéraire</h2>
-      <div class="days-navigation">
+    <section class="section-jours">
+      <h2 class="titre-section">Itinéraire</h2>
+      <div class="navigation-jours">
         @for (journee of guide.journees; track journee.id) {
           <button
-            class="day-btn"
-            [class.active]="journeeSelectionnee?.id === journee.id"
+            class="bouton-jour"
+            [class.actif]="journeeSelectionnee?.id === journee.id"
             (click)="selectionnerJournee(journee)"
           >
-            <span class="day-number">Jour {{ journee.numeroJour }}</span>
-            <span class="day-title">{{ journee.titre }}</span>
+            <span class="numero-jour">Jour {{ journee.numeroJour }}</span>
+            <span class="titre-jour">{{ journee.titre }}</span>
           </button>
         }
       </div>
     </section>
 
-    <!-- Détails du jour sélectionné -->
     @if (journeeSelectionnee) {
-      <section class="day-details">
-        <div class="day-header">
-          <h2 class="day-title-large">
+      <section class="details-jour">
+        <div class="en-tete-jour">
+          <h2 class="titre-jour-important">
             Jour {{ journeeSelectionnee.numeroJour }}: {{ journeeSelectionnee.titre }}
           </h2>
           @if (journeeSelectionnee.description) {
-            <p class="day-description">
+            <p class="description-jour">
               {{ journeeSelectionnee.description }}
             </p>
           }
         </div>
 
-        <!-- Liste des activités -->
-        <div class="activities-list">
-          <h3 class="activities-title">Activités de la journée</h3>
+        <div class="liste-activites">
+          <h3 class="titre-activites">Activités de la journée</h3>
           @for (activite of obtenirActivitesTriees(); track activite.id; let i = $index) {
-            <div class="activity-card">
-              <div class="activity-number">{{ i + 1 }}</div>
-              <div class="activity-content">
-                <h4 class="activity-title">{{ activite.titre }}</h4>
-                <p class="activity-description">{{ activite.description }}</p>
+            <div class="carte-activite">
+              <div class="numero-activite">{{ i + 1 }}</div>
+              <div class="contenu-activite">
+                <h4 class="titre-activite">{{ activite.titre }}</h4>
+                <p class="description-activite">{{ activite.description }}</p>
                 
-                <div class="activity-meta">
+                <div class="meta-activite">
                   @if (activite.heureDebut) {
-                    <span class="activity-time">
+                    <span class="horaire-activite">
                       {{ activite.heureDebut }}
                       @if (activite.heureFin) {
                         <span> - {{ activite.heureFin }}</span>
@@ -86,7 +81,7 @@
                     </span>
                   }
                   @if (activite.lieu) {
-                    <span class="activity-location">
+                    <span class="lieu-activite">
                       {{ activite.lieu }}
                     </span>
                   }
@@ -96,7 +91,7 @@
           }
 
           @if (obtenirActivitesTriees().length === 0) {
-            <div class="no-activities">
+            <div class="aucune-activite">
               Aucune activité prévue pour ce jour
             </div>
           }
@@ -106,18 +101,16 @@
   </div>
 }
 
-<!-- État de chargement -->
 @if (chargementEnCours) {
-  <div class="loading">
-    <div class="spinner"></div>
+  <div class="bloc-chargement">
+    <div class="animation-rotation"></div>
     <p>Chargement du guide...</p>
   </div>
 }
 
-<!-- Erreur -->
 @if (erreur) {
-  <div class="error">
+  <div class="bloc-erreur">
     <p>{{ erreur }}</p>
-    <button (click)="retour()" class="back-btn-error">Retour aux guides</button>
+    <button (click)="retour()" class="bouton-retour-erreur">Retour aux guides</button>
   </div>
 }

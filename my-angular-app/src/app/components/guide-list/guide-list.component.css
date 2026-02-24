@@ -1,38 +1,18 @@
-.guide-list-container {
+.conteneur-liste-guides {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-/* Header */
-.header {
-  text-align: center;
-  margin-bottom: 30px;
-  animation: fadeIn 0.6s ease-in;
-}
-
-.title {
-  font-size: 2.5rem;
-  color: #2c3e50;
-  margin-bottom: 8px;
-  font-weight: 700;
-}
-
-.subtitle {
-  color: #7f8c8d;
-  font-size: 1.1rem;
-}
-
-/* Barre de recherche */
-.search-container {
+.bloc-recherche {
   display: flex;
   gap: 10px;
   margin-bottom: 30px;
   animation: slideDown 0.5s ease-out;
 }
 
-.search-input {
+.champ-recherche {
   flex: 1;
   padding: 15px 20px;
   border: 2px solid #e0e0e0;
@@ -41,13 +21,13 @@
   transition: all 0.3s ease;
 }
 
-.search-input:focus {
+.champ-recherche:focus {
   outline: none;
   border-color: #3498db;
   box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
 }
 
-.refresh-btn {
+.bouton-rafraichir {
   padding: 15px 20px;
   background: #3498db;
   color: white;
@@ -58,19 +38,44 @@
   transition: all 0.3s ease;
 }
 
-.refresh-btn:hover {
+.bouton-rafraichir:hover {
   background: #2980b9;
-  transform: rotate(180deg);  
 }
 
-/* Messages d'état */
-.loading {
+.statut-recherche {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: #fff7e6;
+  border: 1px solid #ffe0b2;
+  border-radius: 12px;
+  color: #a8641a;
+  margin-bottom: 25px;
+  font-size: 0.95rem;
+}
+
+.point-statut {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #f39c12;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.4; }
+  50% { opacity: 1; }
+  100% { opacity: 0.4; }
+}
+
+.bloc-chargement {
   text-align: center;
   padding: 60px 20px;
   color: #7f8c8d;
 }
 
-.spinner {
+.animation-rotation {
   width: 50px;
   height: 50px;
   margin: 0 auto 20px;
@@ -85,7 +90,7 @@
   100% { transform: rotate(360deg); }
 }
 
-.error {
+.bloc-erreur {
   text-align: center;
   padding: 40px 20px;
   color: #e74c3c;
@@ -94,7 +99,7 @@
   margin-bottom: 20px;
 }
 
-.retry-btn {
+.bouton-reessayer {
   margin-top: 15px;
   padding: 10px 24px;
   background: #e74c3c;
@@ -106,26 +111,25 @@
   transition: background 0.3s ease;
 }
 
-.retry-btn:hover {
+.bouton-reessayer:hover {
   background: #c0392b;
 }
 
-.no-results {
+.aucun-resultat {
   text-align: center;
   padding: 60px 20px;
   color: #95a5a6;
   font-size: 1.2rem;
 }
 
-/* Grille des guides */
-.guides-grid {
+.grille-guides {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 24px;
   animation: fadeIn 0.6s ease-in;
 }
 
-.guide-card {
+.carte-guide {
   background: white;
   border-radius: 16px;
   overflow: hidden;
@@ -135,29 +139,29 @@
   animation: slideUp 0.5s ease-out;
 }
 
-.guide-card:hover {
+.carte-guide:hover {
   transform: translateY(-8px);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
-.guide-image-container {
+.conteneur-image-guide {
   position: relative;
   height: 200px;
   overflow: hidden;
 }
 
-.guide-image {
+.image-guide {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
 
-.guide-card:hover .guide-image {
+.carte-guide:hover .image-guide {
   transform: scale(1.1);
 }
 
-.guide-duration {
+.badge-duree-guide {
   position: absolute;
   top: 12px;
   right: 12px;
@@ -169,25 +173,25 @@
   font-weight: 600;
 }
 
-.guide-content {
+.contenu-guide {
   padding: 20px;
 }
 
-.guide-title {
+.titre-guide {
   font-size: 1.4rem;
   color: #2c3e50;
   margin-bottom: 8px;
   font-weight: 600;
 }
 
-.guide-destination {
+.destination-guide {
   color: #3498db;
   font-size: 0.95rem;
   margin-bottom: 12px;
   font-weight: 500;
 }
 
-.guide-description {
+.description-guide {
   color: #7f8c8d;
   line-height: 1.6;
   margin-bottom: 16px;
@@ -198,7 +202,7 @@
   overflow: hidden;
 }
 
-.view-btn {
+.bouton-consultation {
   width: 100%;
   padding: 12px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -211,12 +215,11 @@
   transition: all 0.3s ease;
 }
 
-.view-btn:hover {
+.bouton-consultation:hover {
   transform: translateX(4px);
   box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 
-/* Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -248,18 +251,13 @@
   }
 }
 
-/* Responsive */
 @media (max-width: 768px) {
-  .title {
-    font-size: 2rem;
-  }
-
-  .guides-grid {
+  .grille-guides {
     grid-template-columns: 1fr;
     gap: 16px;
   }
 
-  .search-container {
+  .bloc-recherche {
     flex-direction: column;
   }
 }

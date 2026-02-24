@@ -1,15 +1,14 @@
-.guide-detail-container {
+.conteneur-detail-guide {
   max-width: 1200px;
   margin: 0 auto;
   animation: fadeIn 0.6s ease-in;
 }
 
-/* Header avec image */
-.guide-header {
+.en-tete-guide {
   margin-bottom: 30px;
 }
 
-.back-btn {
+.bouton-retour {
   margin: 20px;
   padding: 12px 24px;
   background: white;
@@ -21,26 +20,26 @@
   font-weight: 500;
 }
 
-.back-btn:hover {
+.bouton-retour:hover {
   background: #f8f9fa;
   border-color: #3498db;
   transform: translateX(-4px);
 }
 
-.cover-image-container {
+.conteneur-image-couverture {
   position: relative;
   height: 400px;
   overflow: hidden;
   border-radius: 0 0 24px 24px;
 }
 
-.cover-image {
+.image-couverture {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.cover-overlay {
+.voile-couverture {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -50,74 +49,72 @@
   color: white;
 }
 
-.guide-title {
+.titre-guide-detail {
   font-size: 3rem;
   font-weight: 700;
   margin-bottom: 10px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.guide-destination {
+.destination-guide-detail {
   font-size: 1.3rem;
   opacity: 0.95;
 }
 
-/* Informations du guide */
-.guide-info {
+.bloc-informations-guide {
   padding: 0 20px;
   margin-bottom: 40px;
 }
 
-.info-card {
+.carte-infos {
   background: white;
   padding: 30px;
   border-radius: 16px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.guide-description {
+.description-guide-detail {
   font-size: 1.1rem;
   line-height: 1.8;
   color: #2c3e50;
   margin-bottom: 20px;
 }
 
-.guide-meta {
+.metadonnees-guide {
   display: flex;
   gap: 30px;
   flex-wrap: wrap;
 }
 
-.meta-item {
+.element-meta {
   color: #7f8c8d;
   font-size: 1rem;
 }
 
-.meta-item strong {
+.element-meta strong {
   color: #2c3e50;
 }
 
-/* Section des jours */
-.days-section {
+.section-jours {
   padding: 0 20px;
   margin-bottom: 40px;
 }
 
-.section-title {
+.titre-section {
   font-size: 2rem;
   color: #2c3e50;
   margin-bottom: 20px;
   font-weight: 600;
 }
 
-.days-navigation {
+.navigation-jours {
   display: flex;
   gap: 12px;
   overflow-x: auto;
   padding-bottom: 10px;
 }
 
-.day-btn {
+.bouton-jour {
   flex-shrink: 0;
   padding: 16px 24px;
   background: white;
@@ -129,19 +126,19 @@
   min-width: 180px;
 }
 
-.day-btn:hover {
+.bouton-jour:hover {
   border-color: #3498db;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
 }
 
-.day-btn.active {
+.bouton-jour.actif {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-color: #667eea;
   color: white;
 }
 
-.day-number {
+.numero-jour {
   display: block;
   font-size: 0.85rem;
   font-weight: 600;
@@ -149,19 +146,18 @@
   opacity: 0.8;
 }
 
-.day-title {
+.titre-jour {
   display: block;
   font-size: 1rem;
   font-weight: 500;
 }
 
-/* Détails du jour */
-.day-details {
+.details-jour {
   padding: 0 20px;
   animation: slideUp 0.4s ease-out;
 }
 
-.day-header {
+.en-tete-jour {
   background: white;
   padding: 30px;
   border-radius: 16px;
@@ -169,35 +165,34 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.day-title-large {
+.titre-jour-important {
   font-size: 2rem;
   color: #2c3e50;
   margin-bottom: 12px;
   font-weight: 600;
 }
 
-.day-description {
+.description-jour {
   font-size: 1.1rem;
   color: #7f8c8d;
   line-height: 1.6;
 }
 
-/* Liste des activités */
-.activities-list {
+.liste-activites {
   background: white;
   padding: 30px;
   border-radius: 16px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.activities-title {
+.titre-activites {
   font-size: 1.5rem;
   color: #2c3e50;
   margin-bottom: 24px;
   font-weight: 600;
 }
 
-.activity-card {
+.carte-activite {
   display: flex;
   gap: 20px;
   padding: 24px;
@@ -208,12 +203,12 @@
   border-left: 4px solid #3498db;
 }
 
-.activity-card:hover {
+.carte-activite:hover {
   transform: translateX(4px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.activity-number {
+.numero-activite {
   flex-shrink: 0;
   width: 40px;
   height: 40px;
@@ -227,51 +222,50 @@
   font-size: 1.1rem;
 }
 
-.activity-content {
+.contenu-activite {
   flex: 1;
 }
 
-.activity-title {
+.titre-activite {
   font-size: 1.3rem;
   color: #2c3e50;
   margin-bottom: 8px;
   font-weight: 600;
 }
 
-.activity-description {
+.description-activite {
   color: #7f8c8d;
   line-height: 1.6;
   margin-bottom: 12px;
 }
 
-.activity-meta {
+.meta-activite {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
   font-size: 0.95rem;
 }
 
-.activity-time,
-.activity-location {
+.horaire-activite,
+.lieu-activite {
   color: #3498db;
   font-weight: 500;
 }
 
-.no-activities {
+.aucune-activite {
   text-align: center;
   padding: 40px;
   color: #95a5a6;
   font-size: 1.1rem;
 }
 
-/* États */
-.loading {
+.bloc-chargement {
   text-align: center;
   padding: 100px 20px;
   color: #7f8c8d;
 }
 
-.spinner {
+.animation-rotation {
   width: 60px;
   height: 60px;
   margin: 0 auto 20px;
@@ -281,18 +275,13 @@
   animation: spin 1s linear infinite;
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.error {
+.bloc-erreur {
   text-align: center;
   padding: 100px 20px;
   color: #e74c3c;
 }
 
-.back-btn-error {
+.bouton-retour-erreur {
   margin-top: 20px;
   padding: 12px 24px;
   background: #3498db;
@@ -304,11 +293,15 @@
   transition: background 0.3s ease;
 }
 
-.back-btn-error:hover {
+.bouton-retour-erreur:hover {
   background: #2980b9;
 }
 
-/* Animations */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -329,30 +322,29 @@
   }
 }
 
-/* Responsive */
 @media (max-width: 768px) {
-  .guide-title {
+  .titre-guide-detail {
     font-size: 2rem;
   }
 
-  .cover-image-container {
+  .conteneur-image-couverture {
     height: 300px;
   }
 
-  .days-navigation {
+  .navigation-jours {
     flex-direction: column;
   }
 
-  .day-btn {
+  .bouton-jour {
     width: 100%;
   }
 
-  .activity-card {
+  .carte-activite {
     flex-direction: column;
     text-align: center;
   }
 
-  .activity-number {
+  .numero-activite {
     margin: 0 auto;
   }
 }

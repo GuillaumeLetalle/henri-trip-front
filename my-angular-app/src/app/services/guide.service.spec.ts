@@ -19,5 +19,4 @@ describe('ServiceGuide', () => {
     expect(service).toBeTruthy();
   });
 
-  // tests à compléter...
 });
